@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.14.36414.22 d17.14
+VisualStudioVersion = 17.14.36414.22
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "drydrydessert.client", "drydrydessert.client\drydrydessert.client.esproj", "{45847E43-CD6F-5A5A-0DD3-01315EB4D78D}"
 EndProject
@@ -10,6 +10,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DryDryDessert.AppHost", "DryDryDessert.AppHost\DryDryDessert.AppHost.csproj", "{D8360556-7714-4100-AFFA-DA655E9918BC}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DryDryDessert.ServiceDefaults", "DryDryDessert.ServiceDefaults\DryDryDessert.ServiceDefaults.csproj", "{A119E17A-42D8-4BD1-F150-9929D29C35C5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DryDryDessert.ProductInformationManagement", "DryDryDessert.ProductInformationManagement\DryDryDessert.ProductInformationManagement.csproj", "{A0B75BD2-4967-7DB9-DB07-D4D45DAE6C9B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{A119E17A-42D8-4BD1-F150-9929D29C35C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A119E17A-42D8-4BD1-F150-9929D29C35C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A119E17A-42D8-4BD1-F150-9929D29C35C5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A0B75BD2-4967-7DB9-DB07-D4D45DAE6C9B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A0B75BD2-4967-7DB9-DB07-D4D45DAE6C9B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A0B75BD2-4967-7DB9-DB07-D4D45DAE6C9B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A0B75BD2-4967-7DB9-DB07-D4D45DAE6C9B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

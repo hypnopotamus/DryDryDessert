@@ -1,5 +1,6 @@
 var builder = DistributedApplication.CreateBuilder(args);
 
+builder.AddProject<Projects.DryDryDessert_ProductInformationManagement>("pim");
 builder.AddProject<Projects.DryDryDessert_Server>("server");
 builder.AddNpmApp
     (
