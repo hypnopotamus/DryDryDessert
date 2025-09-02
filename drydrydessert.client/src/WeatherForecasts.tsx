@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Typography, Link, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material';
+import { Typography, Link, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material';
 
 interface Forecast {
     date: string;
@@ -8,9 +8,9 @@ interface Forecast {
     summary: string;
 }
 
-const useFetchWeatherData = (setForecasts: React.Dispatch<React.SetStateAction<Forecast[] | undefined>>) =>
+const useWeatherData = (setForecasts: React.Dispatch<React.SetStateAction<Forecast[] | undefined>>) =>
     useEffect(() => {
-        async function populateWeatherData() {
+        const populateWeatherData = async () => {
             const response = await fetch('weatherforecast');
             if (response.ok) {
                 const data = await response.json();
@@ -23,7 +23,7 @@ const useFetchWeatherData = (setForecasts: React.Dispatch<React.SetStateAction<F
 
 export const WeatherForecasts = () => {
     const [forecasts, setForecasts] = useState<Forecast[]>();
-    useFetchWeatherData(setForecasts);
+    useWeatherData(setForecasts);
 
     if (!forecasts) {
         return <Typography>
