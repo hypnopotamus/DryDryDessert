@@ -17,6 +17,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\drydrydessert.client\drydrydessert.client.esproj" />
+    <ProjectReference Include="..\DryDryDessert.EndToEndTest\DryDryDessert.EndToEndTest.esproj" />
     <ProjectReference Include="..\DryDryDessert.ProductInformationManagement\DryDryDessert.ProductInformationManagement.csproj" />
     <ProjectReference Include="..\DryDryDessert.Server\DryDryDessert.Server.csproj" />
   </ItemGroup>

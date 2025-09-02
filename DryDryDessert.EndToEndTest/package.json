@@ -1,0 +1,12 @@
+{
+  "name": "drydrydessert.endtoendtest",
+  "private": true,
+  "version": "0.0.0",
+  "scripts": {
+    "test": "npx playwright test"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.55.0",
+    "@types/node": "^24.3.0"
+  }
+}
