@@ -1,7 +1,7 @@
 var builder = DistributedApplication.CreateBuilder(args);
 
-builder.AddProject<Projects.DryDryDessert_ProductInformationManagement>("pim");
-builder.AddProject<Projects.DryDryDessert_Server>("server");
+var pim = builder.AddProject<Projects.DryDryDessert_ProductInformationManagement>("pim");
+var api = builder.AddProject<Projects.DryDryDessert_Server>("server");
 builder.AddNpmApp
     (
         "client",
@@ -9,6 +9,8 @@ builder.AddNpmApp
         "dev"
     )
     .WithEnvironment("DEV_SERVER_PORT", "49675")
-    .WithHttpsEndpoint(port: 49675, isProxied: false);
+    .WithHttpsEndpoint(port: 49675, isProxied: false)
+    .WithReference(pim)
+    .WithReference(api);
 
 builder.Build().Run();

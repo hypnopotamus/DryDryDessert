@@ -34,8 +34,6 @@ if (!fs.existsSync(certFilePath) || !fs.existsSync(keyFilePath)) {
     }
 }
 
-const target = env["services__drydrydessert-server__https__0"] ?? 'https://localhost:7114';
-
 // https://vitejs.dev/config/
 export default defineConfig({
     plugins: [react()],
@@ -46,9 +44,15 @@ export default defineConfig({
     },
     server: {
         proxy: {
-            '^/weatherforecast': {
-                target,
-                secure: false
+            '^/api': {
+                target: env["services__api__https__0"] ?? 'https://localhost:7114',
+                secure: false,
+                rewrite: (path) => path.replace(/^\/api/, ''),
+            },
+            '^/pim': {
+                target: env["services__pim__https__0"] ?? 'https://localhost:7167',
+                secure: false,
+                rewrite: (path) => path.replace(/^\/pim/, ''),
             }
         },
         port: parseInt(env.DEV_SERVER_PORT || '49765'),
