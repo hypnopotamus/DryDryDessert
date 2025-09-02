@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Typography, Link, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material';
+import { serverClientFactory } from './clients';
+import type { WeatherForecast } from './clients/server';
 
 interface Forecast {
     date: string;
@@ -8,14 +10,20 @@ interface Forecast {
     summary: string;
 }
 
-const useWeatherData = (setForecasts: React.Dispatch<React.SetStateAction<Forecast[] | undefined>>) =>
+const asForecasts = (forecasts: WeatherForecast[]): Forecast[] => forecasts.map(asForecast);
+const asForecast = (forecast: WeatherForecast): Forecast => ({
+    date: forecast.date!.toLocaleDateString(),
+    temperatureC: forecast.temperatureC!,
+    temperatureF: forecast.temperatureF!,
+    summary: forecast.summary ?? ''
+});
+
+const useWeatherData = (setForecasts: ReturnType<typeof useState<Forecast[]>>[1]) =>
     useEffect(() => {
         const populateWeatherData = async () => {
-            const response = await fetch('weatherforecast');
-            if (response.ok) {
-                const data = await response.json();
-                setForecasts(data);
-            }
+            const client = serverClientFactory();
+            const response = await client.getWeatherForecast();
+            setForecasts(asForecasts(response));
         }
 
         populateWeatherData();

@@ -1,3 +1,5 @@
+using System.ComponentModel.DataAnnotations;
+
 namespace DryDryDessert.Server;
 
 public class WeatherForecast

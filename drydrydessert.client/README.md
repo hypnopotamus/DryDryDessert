@@ -67,3 +67,6 @@ export default tseslint.config([
   },
 ])
 ```
+
+openapi-generator-cli requires java and the other client generators I've tried are... not so great
+`winget install Microsoft.OpenJDK.21` was what I used in a windows environment
