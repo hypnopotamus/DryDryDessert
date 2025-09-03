@@ -22,6 +22,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "DryDryDessert.EndToEndTest", "DryDryDessert.EndToEndTest\DryDryDessert.EndToEndTest.esproj", "{9F8165ED-65D0-CA3F-EE72-075572873912}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DryDryDessert.FakeProducts", "DryDryDessert.FakeProducts\DryDryDessert.FakeProducts.csproj", "{B7D112C0-0B20-4327-9144-4294793030AA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -54,6 +56,10 @@ Global
 		{9F8165ED-65D0-CA3F-EE72-075572873912}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9F8165ED-65D0-CA3F-EE72-075572873912}.Release|Any CPU.Build.0 = Release|Any CPU
 		{9F8165ED-65D0-CA3F-EE72-075572873912}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{B7D112C0-0B20-4327-9144-4294793030AA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B7D112C0-0B20-4327-9144-4294793030AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B7D112C0-0B20-4327-9144-4294793030AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B7D112C0-0B20-4327-9144-4294793030AA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

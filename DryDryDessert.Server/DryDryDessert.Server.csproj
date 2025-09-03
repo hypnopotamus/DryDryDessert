@@ -15,6 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\DryDryDessert.FakeProducts\DryDryDessert.FakeProducts.csproj" />
     <ProjectReference Include="..\DryDryDessert.ServiceDefaults\DryDryDessert.ServiceDefaults.csproj" />
   </ItemGroup>
 

@@ -1,3 +1,4 @@
+using DryDryDessert.FakeProducts;
 using Scalar.AspNetCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -6,6 +7,8 @@ builder.AddServiceDefaults();
 
 builder.Services.AddControllers();
 builder.Services.AddOpenApi();
+
+builder.Services.AddSingleton<IProductInformationRepository, ProductRepository>();
 
 var app = builder.Build();
 
