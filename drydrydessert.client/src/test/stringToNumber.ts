@@ -1,0 +1,1 @@
+export const stringToNumber = (s: string): number => [...s].reduce((a, c) => a + c.charCodeAt(0), 0)

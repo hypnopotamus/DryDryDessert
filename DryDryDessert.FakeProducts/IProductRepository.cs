@@ -4,5 +4,5 @@ public interface IProductRepository
 {
     Task<IReadOnlyCollection<IProduct>> GetAllProducts();
     Task<IProduct> GetProduct(Guid id);
-    Task AddProductReview(Guid productId, IProductReview review);
+    Task AddProductReview(Guid id, string review);
 }

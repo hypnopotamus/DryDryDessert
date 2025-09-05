@@ -15,5 +15,5 @@ public class ProductsController(IProductRepository products) : ControllerBase
     public async Task<Contracts.Product> Get(Guid id) => (await products.GetProduct(id)).ToContract();
 
     [HttpPost("{id:guid}/reviews")]
-    public async Task Post(Guid id, [FromBody] Contracts.ProductReview review) => await products.AddProductReview(id, review.FromContract());
+    public async Task Post(Guid id, [FromBody] string review) => await products.AddProductReview(id, review);
 }

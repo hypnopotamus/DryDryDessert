@@ -11,6 +11,7 @@ public static class ProductContractExtensions
             pimProduct.Name,
             pimProduct.Description,
             pimProduct.QuantityInStock,
-            pimProduct.PricePerUnit
+            pimProduct.PricePerUnit,
+            pimProduct.Image
         );
 }

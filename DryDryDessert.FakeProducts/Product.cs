@@ -9,6 +9,7 @@ public interface IPimProduct
     string Description { get; }
     int QuantityInStock { get; }
     decimal PricePerUnit { get; }
+    Uri Image { get; }
 }
 
 public interface IProduct
@@ -33,7 +34,8 @@ public record Product
     int QuantityInStock,
     decimal PricePerUnit,
     string Type,
-    IReadOnlyCollection<ProductReview> Reviews
+    IReadOnlyCollection<ProductReview> Reviews,
+    Uri Image
 ) : IProduct, IPimProduct
 {
     IReadOnlyCollection<IProductReview> IProduct.Reviews => Reviews;

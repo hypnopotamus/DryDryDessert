@@ -13,12 +13,17 @@ var ui = builder.AddNpmApp
     .WithReference(pim)
     .WithReference(api);
 
-builder.AddNpmApp(
-    "end-to-end",
-    Path.GetDirectoryName(new Projects.DryDryDessert_EndToEndTest().ProjectPath) ?? throw new InvalidOperationException(),
-    "test"
-)
-.WithExplicitStart()
-.WithReference(ui);
+builder.AddNpmApp
+    (
+        "end-to-end",
+        Path.GetDirectoryName
+            (new Projects.DryDryDessert_EndToEndTest().ProjectPath) ??
+        throw new InvalidOperationException(),
+        "test"
+    )
+    .WithExplicitStart()
+    .WithReference(ui)
+    .WithReference(pim)
+    .WithReference(api);
 
 builder.Build().Run();

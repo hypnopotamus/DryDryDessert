@@ -10,4 +10,7 @@ public class ProductsController(IProductInformationRepository products) : Contro
 {
     [HttpGet("{id:guid}")]
     public async Task<Contracts.Product> GetProductInformation(Guid id) => (await products.GetProduct(id)).ToContract();
+
+    [HttpPost($"{{id:guid}}/{{{nameof(Contracts.Product.QuantityInStock)}:int}}")]
+    public async Task UpdateStockQuantity(Guid id, int quantity) => await products.RecordPurchase(id, quantity);
 }

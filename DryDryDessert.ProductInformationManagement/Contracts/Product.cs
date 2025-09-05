@@ -6,5 +6,6 @@ public record Product
     string Name,
     string Description,
     int QuantityInStock,
-    decimal PricePerUnit
+    decimal PricePerUnit,
+    Uri Image
 );

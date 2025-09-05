@@ -1,3 +1,3 @@
 /* tslint:disable */
 /* eslint-disable */
-export * from './WeatherForecast';
+export * from './Product';
