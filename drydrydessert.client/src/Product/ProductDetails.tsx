@@ -10,8 +10,8 @@ export const ProductDetails = ({ productId }: props) => {
     const product = useGetProduct(productId);
 
     return (
-        <ProductContext.Provider value={{ product }}>
+        <ProductContext value={{ product }}>
             <ProductTile />
-        </ProductContext.Provider >
+        </ProductContext >
     );
 };

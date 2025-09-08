@@ -12,6 +12,10 @@ import { Provider } from 'react-redux'
 export type navigateToProductDetails = (productId: string) => void;
 export type navigateToHome = () => void;
 
+//todo add a search bar component that navigates to the results page but doesn't do anything
+//  add that to the app layout here
+//todo: fill in the shopping cart UI to show what's in the cart and mutate state backend
+
 type routeParams = Readonly<Params<string>>;
 const navigateRoute = (navigate: ReturnType<typeof useNavigate>, setParams: (p: routeParams) => void) =>
     (path: string, params: routeParams = {}) => {

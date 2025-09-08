@@ -1,9 +1,10 @@
 import { Box, Typography } from "@mui/material";
 import { ProductCard } from "./ProductCard";
-import { ProductContext } from "./ProductContext";
 import { useLoadProductPrice } from "../Entities/useLoadProductProperty";
 import type { Product } from "../Entities/Product";
 import { AddToCartButton } from "../ShoppingCart/AddToCartButton";
+import { useContext } from "react";
+import { ProductContext } from "./ProductContext";
 
 const ProductContent = ({ product }: { product: Product }) => {
     const price = useLoadProductPrice(product);
@@ -26,14 +27,12 @@ const ProductContent = ({ product }: { product: Product }) => {
 }
 
 export const ProductTile = () => {
-    return (
-        <>
-            <ProductContext.Consumer>
-                {value => value.product && <>
-                    <ProductContent product={value.product} />
-                    <AddToCartButton product={value.product} />
-                </>}
-            </ProductContext.Consumer>
-        </>
-    );
+    const { product } = useContext(ProductContext)
+
+    return product
+        ? (<>
+            <ProductContent product={product} />
+            <AddToCartButton product={product} />
+        </>)
+        : null;
 }

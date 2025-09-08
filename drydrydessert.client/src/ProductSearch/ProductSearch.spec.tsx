@@ -1,5 +1,9 @@
+import { ProductSearch } from "./ProductSearch";
+
 describe("<ProductSearch />", () => {
-    it("needs to be tested", () => {
-        expect(true).toBe(false);
-    })
+    it("doesn't do anything", () => {
+        const { queryByText } = render(<ProductSearch navigateToProductDetails={vi.fn()} />);
+
+        expect(queryByText('Search')).toBeVisible();
+    });
 });

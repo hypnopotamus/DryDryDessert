@@ -10,10 +10,10 @@ const productContracts = [
     productContractFactory("2", productReviewContractFactory("2"), productReviewContractFactory("2")),
 ];
 
-vi.mocked(productFromContract).mockImplementation(p => ({}) as Product);
+vi.mocked(productFromContract).mockImplementation(() => ({}) as Product);
 
 describe("productsFromContract", () => {
-    it("needs to be tested", () => {
+    it("converts each product", () => {
         const products = productsFromContract(productContracts);
 
         expect(products).toHaveLength(productContracts.length);
