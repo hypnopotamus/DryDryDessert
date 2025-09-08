@@ -6,6 +6,8 @@ import ShoppingCart from "./ShoppingCart";
 import { theme } from "./app.theme";
 import ProductDetails from "./Product";
 import { useState } from "react";
+import { store } from './app.store'
+import { Provider } from 'react-redux'
 
 export type navigateToProductDetails = (productId: string) => void;
 export type navigateToHome = () => void;
@@ -14,7 +16,6 @@ type routeParams = Readonly<Params<string>>;
 const navigateRoute = (navigate: ReturnType<typeof useNavigate>, setParams: (p: routeParams) => void) =>
     (path: string, params: routeParams = {}) => {
         setParams(params);
-        const l = Object.entries(params).reduce((p, [key, value]) => p.replace(`:${key}`, value ?? ""), path);
         navigate(Object.entries(params).reduce((p, [key, value]) => p.replace(`:${key}`, value ?? ""), path));
     };
 
@@ -34,11 +35,11 @@ const AppContent = () => {
                 const location = useLocation();
                 const { id } = { ...currentRouteParams, ...nextRouteparams };
 
-                if(id){
+                if (id) {
                     return <ProductDetails productId={id} />;
                 }
-                
-                if(location.pathname.startsWith("/Product")){
+
+                if (location.pathname.startsWith("/Product")) {
                     navigateToHome();
                 }
 
@@ -50,9 +51,11 @@ const AppContent = () => {
 
 export const App = () => (
     <ThemeProvider theme={theme}>
-        <BrowserRouter>
-            <AppContent />
-        </BrowserRouter>
+        <Provider store={store}>
+            <BrowserRouter>
+                <AppContent />
+            </BrowserRouter>
+        </Provider>
     </ThemeProvider>
 );
 export default App;

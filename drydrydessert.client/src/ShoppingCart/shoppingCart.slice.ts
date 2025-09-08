@@ -6,11 +6,7 @@ import { useAppSelector } from '../app.store.hooks';
 
 type ProductSelection = Product & { selectedQuantity: number };
 interface Cart {
-    selectedProducts: Map<string, ProductSelection>;
-};
-
-const initialState: Cart = {
-    selectedProducts: new Map(),
+    [key: string]: ProductSelection
 };
 
 const isNumber = (value: any): value is number => typeof value === 'number';
@@ -18,28 +14,27 @@ const isString = (value: any): value is string => typeof value === 'string';
 
 const updateCart = (cart: Cart, product: Product | string, amount: (number | ((p: ProductSelection) => number))) => {
     if (isString(product)) {
-        const p = cart.selectedProducts.get(product);
+        const p = cart[product];
         if (!p) return;
         product = p;
     }
 
     const newAmount = isNumber(amount)
         ? amount
-        : amount(cart.selectedProducts.get(product.id)!);
+        : amount(cart[product.id]);
     if (newAmount <= 0) {
-        cart.selectedProducts.delete(product.id);
+        delete cart[product.id];
         return;
     }
 
-    cart.selectedProducts.set(
-        product.id,
-        {
-            ...product,
-            selectedQuantity: newAmount
-        }
-    );
+    cart[product.id] =
+    {
+        ...product,
+        selectedQuantity: newAmount
+    };
 };
 
+const initialState: Cart = {};
 const cartSlice = createSlice({
     name: 'counter',
     initialState,
@@ -48,7 +43,7 @@ const cartSlice = createSlice({
             updateCart(
                 cart,
                 product,
-                (cart.selectedProducts.get(product.id)?.selectedQuantity ?? 0) + 1
+                (cart[product.id]?.selectedQuantity ?? 0) + 1
             ),
         incrementProduct: (cart, { payload: productId }: PayloadAction<string>) =>
             updateCart(
@@ -69,10 +64,10 @@ const cartSlice = createSlice({
                 amount
             ),
         removeProduct: (cart, { payload: productId }: PayloadAction<string>) => {
-            cart.selectedProducts.delete(productId);
+            delete cart[productId];
         },
         clearCart: (cart) => {
-            cart.selectedProducts.clear();
+            cart = {};
         }
     },
 })

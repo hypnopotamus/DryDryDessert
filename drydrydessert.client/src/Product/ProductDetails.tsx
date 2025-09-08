@@ -1,7 +1,17 @@
+import { useGetProduct } from "../Entities/useGetProduct";
+import { ProductContext } from "./ProductContext";
+import { ProductTile } from "./ProductTile";
+
 interface props {
     productId: string;
 }
 
 export const ProductDetails = ({ productId }: props) => {
-    return <div>Product details</div>;
+    const product = useGetProduct(productId);
+
+    return (
+        <ProductContext.Provider value={{ product }}>
+            <ProductTile />
+        </ProductContext.Provider >
+    );
 };

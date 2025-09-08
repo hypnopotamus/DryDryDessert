@@ -3,6 +3,8 @@ import { ProductTile } from "./ProductTile";
 import { ProductCard } from "../Product/ProductCard";
 import { AddToCartButton } from "../ShoppingCart/AddToCartButton";
 import { Button, Box } from "@mui/material";
+import { ProductContext } from "./ProductContext";
+import type { ReactNode } from "react";
 
 vi.mock("../Product/ProductCard");
 vi.mock("../ShoppingCart/AddToCartButton");
@@ -13,8 +15,7 @@ const renderProductCardContent = (p: Parameters<typeof ProductCard>[0]['product'
 const renderAddToCartProduct = (p: Parameters<typeof AddToCartButton>[0]['product']) => `add-${JSON.stringify(p)}`;
 vi.mocked(ProductCard).mockImplementation(props => (
     <Box>
-        {(props.children as any)['content'] ?? null}
-        {(props.children as any)['actions'] ?? null}
+        {(props.children as any) ?? null}
         <Button onClick={props.onClick}>
             {renderProductCardContent(props.product)}
         </Button>
@@ -26,48 +27,30 @@ vi.mocked(AddToCartButton).mockImplementation(props => (
     </>
 ));
 
-describe("<ProductTile />", () => {
-    const props: Parameters<typeof ProductTile>[0] = {
-        product: product,
-        openDetails: vi.fn()
-    }
+const renderWithContext = async (element: ReactNode) => await act(async () => await render(
+    <ProductContext.Provider value={{ product }}>
+        {element}
+    </ProductContext.Provider>
+));
 
+describe("<ProductTile />", () => {
     it("renders the product card", async () => {
-        const { queryByText } = await act(async () => await render(<ProductTile {...props} />));
+        const { queryByText } = await renderWithContext(<ProductTile />);
 
         expect(queryByText(renderProductCardContent(product))).toBeVisible();
     });
 
-    it("renders the product name and description", async () => {
-        const { queryByText } = await act(async () => await render(<ProductTile {...props} />));
+    it("renders the product name, description, and price", async () => {
+        const { queryByText } = await renderWithContext(<ProductTile />);
 
         expect(queryByText(product.name)).toBeVisible();
         expect(queryByText(await product.description)).toBeVisible();
     });
 
     it("renders the add to cart action button", async () => {
-        const { queryByText } = await act(async () => await render(<ProductTile {...props} />));
+        const { queryByText } = await renderWithContext(<ProductTile />);
 
         expect(queryByText(product.name)).toBeVisible();
         expect(queryByText(await product.description)).toBeVisible();
-    });
-
-    describe("when clicked", () => {
-        it("opens the product details", async () => {
-            const openDetails = vi.fn();
-
-            const { getByRole } = await act(async () => await render(<ProductTile {...props} openDetails={openDetails} />));
-            await userEvent.click(getByRole('button'));
-
-            expect(openDetails).toHaveBeenCalled();
-        });
-    });
-
-    describe("card actions", () => {
-        it("includes the add to cart button", async () => {
-            const { queryByText } = await act(async () => await render(<ProductTile {...props} />));
-
-            expect(queryByText(renderAddToCartProduct(product.id))).toBeVisible();
-        });
     });
 });

@@ -11,7 +11,9 @@ var ui = builder.AddNpmApp
     .WithEnvironment("DEV_SERVER_PORT", "49675")
     .WithHttpsEndpoint(port: 49675, isProxied: false)
     .WithReference(pim)
-    .WithReference(api);
+    .WaitFor(pim)
+    .WithReference(api)
+    .WaitFor(api);
 
 builder.AddNpmApp
     (
@@ -23,7 +25,10 @@ builder.AddNpmApp
     )
     .WithExplicitStart()
     .WithReference(ui)
+    .WaitFor(ui)
     .WithReference(pim)
-    .WithReference(api);
+    .WaitFor(pim)
+    .WithReference(api)
+    .WaitFor(api);
 
 builder.Build().Run();
