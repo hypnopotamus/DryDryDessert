@@ -1,11 +1,11 @@
-import type { render, act, renderHook } from '@testing-library/react';
-import type { waitFor } from '@testing-library/dom';
-import type userEvent from '@testing-library/user-event';
+import type { render as r, act as a, renderHook as rh } from '@testing-library/react';
+import type { waitFor as wf } from '@testing-library/dom';
+import type * as ue from '@testing-library/user-event';
 
 declare global {
-    const render: typeof render;
-    const act: typeof act;
-    const renderHook: typeof renderHook;
-    const waitFor: typeof waitFor;
-    const userEvent: typeof userEvent;
+    const render: typeof r;
+    const act: typeof a;
+    const renderHook: typeof rh;
+    const waitFor: typeof wf;
+    const userEvent: typeof ue.userEvent;
 }

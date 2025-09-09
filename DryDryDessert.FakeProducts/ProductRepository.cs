@@ -53,6 +53,17 @@ public class ProductRepository : IProductRepository, IProductInformationReposito
 
     private readonly Dictionary<Guid, Product> _products = new()
     {
+        [new Guid("B12036A4-CEF7-43F2-9B68-C6A348E2A524")] = new Product
+        (
+            new Guid("B12036A4-CEF7-43F2-9B68-C6A348E2A524"),
+            "Mood Ring",
+            "Tell your friends when you're in a bad mood without having to snap at them!",
+            25,
+            5.99M,
+            "Jewelry",
+            [],
+            new Uri("images/B12036A4-CEF7-43F2-9B68-C6A348E2A524.jpg", UriKind.Relative)
+        ),
         [new Guid("D407A0DB-EDCB-4168-A138-5B590717FF05")] = new Product
         (
             new Guid("D407A0DB-EDCB-4168-A138-5B590717FF05"),
@@ -63,6 +74,17 @@ public class ProductRepository : IProductRepository, IProductInformationReposito
             "Power Tool",
             [],
             new Uri("images/D407A0DB-EDCB-4168-A138-5B590717FF05.png", UriKind.Relative)
+        ),
+        [new Guid("46AD4D55-36D3-4EA4-8047-A2E71F2D43C5")] = new Product
+        (
+            new Guid("46AD4D55-36D3-4EA4-8047-A2E71F2D43C5"),
+            "Bumble Bee Broach",
+            "24k gold bumblebee pin/broach encrusted with diamonds",
+            1,
+            5000.00M,
+            "Jewelry",
+            [],
+            new Uri("images/46AD4D55-36D3-4EA4-8047-A2E71F2D43C5.jpg", UriKind.Relative)
         ),
         [new Guid("94B606FC-2F60-4061-A215-4BDCF38C0718")] = new Product
         (
@@ -151,28 +173,6 @@ public class ProductRepository : IProductRepository, IProductInformationReposito
             "Clothing",
             [],
             new Uri("images/730BE43D-ECF2-4EDE-9A8E-0C1C564DE96D.png", UriKind.Relative)
-        ),
-        [new Guid("46AD4D55-36D3-4EA4-8047-A2E71F2D43C5")] = new Product
-        (
-            new Guid("46AD4D55-36D3-4EA4-8047-A2E71F2D43C5"),
-            "Bumble Bee Broach",
-            "24k gold bumblebee pin/broach encrusted with diamonds",
-            1,
-            5000.00M,
-            "Jewelry",
-            [],
-            new Uri("images/46AD4D55-36D3-4EA4-8047-A2E71F2D43C5.jpg", UriKind.Relative)
-        ),
-        [new Guid("B12036A4-CEF7-43F2-9B68-C6A348E2A524")] = new Product
-        (
-            new Guid("B12036A4-CEF7-43F2-9B68-C6A348E2A524"),
-            "Mood Ring",
-            "Tell your friends when you're in a bad mood without having to snap at them!",
-            25,
-            5.99M,
-            "Jewelry",
-            [],
-            new Uri("images/B12036A4-CEF7-43F2-9B68-C6A348E2A524.jpg", UriKind.Relative)
         ),
     };
 }

@@ -2,8 +2,10 @@ import { ProductSearch } from "./ProductSearch";
 
 describe("<ProductSearch />", () => {
     it("doesn't do anything", () => {
-        const { queryByText } = render(<ProductSearch navigateToProductDetails={vi.fn()} />);
+        const query = "some bs";
 
-        expect(queryByText('Search')).toBeVisible();
+        const { queryByText } = render(<ProductSearch query={query} navigateToProductDetails={vi.fn()} />);
+
+        expect(queryByText(query, { exact: false })).toBeVisible();
     });
 });

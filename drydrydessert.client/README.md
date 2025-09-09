@@ -11,7 +11,7 @@
 - compose smaller components into larger ones
    - e.g. [`<ProductTile />`](./src/HomePage/ProductTile.tsx)
 - "reverse" compose components with children props or "slotted children"
-  - e.g. children: [`<ProductCard />`](./src/Product/ProductCard.tsx#L25)
+  - e.g. children: [`<Layout />`](./src/Layout.tsx#L10)
   - e.g. slots:
      - [`<ProductTile />`](./src/HomePage/ProductTile.tsx#L15) provides slotted children
      - [`<ProductCard />`](./src/Product/ProductCard.tsx#L22) renders slotted children
@@ -97,3 +97,5 @@ a few examples:
 ## Try it Yourself
 
 [product search](./src/ProductSearch/ProductSearch.tsx) has been intentionally left unimplemented to give you a place to play.  The search Bar on the other pages does nothing other than bring you to the search results "page".
+
+Or play around with changing whatever!
