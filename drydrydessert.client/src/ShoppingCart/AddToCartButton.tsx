@@ -1,5 +1,5 @@
 import { IconButton } from "@mui/material";
-import { useDispatch } from "react-redux";
+import { useDispatch } from "../app.store.hooks";
 import { addProduct } from "./shoppingCart.slice";
 import type { Product } from "../Entities/Product";
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';

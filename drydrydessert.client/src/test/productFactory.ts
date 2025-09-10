@@ -14,5 +14,5 @@ export const productFactory = (id: string, ...reviews: ProductReview[]): Product
         return p + p / 100;
     })()),
     reviews,
-    image: Promise.resolve(new URL(`http://${id}-image.com`))
+    image: Promise.resolve(new URL(`http://${id.replace(" ", "")}-image.com`))
 });

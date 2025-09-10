@@ -5,6 +5,7 @@ import type { Product } from "../Entities/Product";
 import { AddToCartButton } from "../ShoppingCart/AddToCartButton";
 import { useContext } from "react";
 import { ProductContext } from "./ProductContext";
+import { asCurrency } from "./asCurrency";
 
 const ProductContent = ({ product }: { product: Product }) => {
     const price = useLoadProductPrice(product);
@@ -19,7 +20,7 @@ const ProductContent = ({ product }: { product: Product }) => {
                     {product.description}
                 </Typography>
                 <Typography color="text.secondary">
-                    {price?.toLocaleString(undefined, { style: 'currency', currency: 'USD' })}
+                    {asCurrency(price)}
                 </Typography>
             </Box>
         </ProductCard>

@@ -1,7 +1,7 @@
 import { IconButton, InputAdornment, OutlinedInput } from "@mui/material";
 import type { navigateToSearch } from "../App";
 import { useRef } from "react";
-import { Search } from "@mui/icons-material";
+import SearchIcon from '@mui/icons-material/Search';
 
 export interface Props {
     search: navigateToSearch
@@ -19,7 +19,7 @@ export const SearchBar = ({ search }: Props) => {
             endAdornment={
                 <InputAdornment position="end">
                     <IconButton onClick={performSearch}>
-                        <Search />
+                        <SearchIcon />
                     </IconButton>
                 </InputAdornment>
             } />

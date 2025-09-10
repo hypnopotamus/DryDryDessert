@@ -13,8 +13,6 @@ export type navigateToHome = () => void;
 export type navigateToSearch = (query: string) => void;
 export type navigateToCheckout = () => void;
 
-//todo: fill in the shopping cart UI to show what's in the cart and mutate state backend
-
 type routeParams = Readonly<Params<string>>;
 const navigateRoute = (navigate: ReturnType<typeof useNavigate>, setParams: (p: routeParams) => void) =>
     (path: string, params: routeParams = {}) => {
@@ -44,7 +42,7 @@ const AppContent = () => {
                     />
                 } />
                 <Route path="/Cart" element={
-                    <ShoppingCart navigateToHome={navigateToHome} />
+                    <ShoppingCart />
                 } />
                 <Route path="/Product/:id" element={(() => {
                     const location = useLocation();

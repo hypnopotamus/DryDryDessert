@@ -1,0 +1,1 @@
+export const asCurrency = (n?: number) => (n ?? 0).toLocaleString(undefined, { style: 'currency', currency: 'USD' });
