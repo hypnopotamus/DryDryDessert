@@ -1,30 +1,28 @@
 import type { Page } from '@playwright/test';
-import ollama, { Tool } from 'ollama'
+import type { Message, Tool } from 'ollama';
+import ollama from 'ollama';
+import { clickByText } from './tools/clickByText';
+import { focusByLabel } from './tools/focusByLabel';
+import { pressKey } from './tools/pressKey';
+import { typeText } from './tools/typeText';
+import { test } from '@playwright/test';
 
 const testerModel = "llama3.1:8b";
-type ToolFunction = Tool & { handler: (page: Page, params: any) => Promise<any | void> | void }
+export type ToolFunction = Tool & { handler: (page: Page, params: any) => Promise<any | void> | void }
 
 export const user = (page: Page): (command: string) => Promise<void> => {
-    //https://github.com/microsoft/playwright/tree/main/packages/playwright/src/mcp/browser/tools has the mcp server defaults
-    const functions: ToolFunction[] = [{
-        function: {
-            name: 'clickByText',
-            description: "find an element in the page by text then click it",
-            parameters: {
-                type: "object",
-                required: ["text"],
-                properties: {
-                    text: { type: "string", description: "the text to search the page for" },
-                }
-            }
-        },
-        type: 'function',
-        handler: async (page: Page, { text }: { text: string }) =>
-            page.getByText(text, { exact: true }).click()
-    }];
+    test.slow();
+
+    //https://github.com/microsoft/playwright/tree/main/packages/playwright/src/mcp/browser/tools has the mcp server tools, for inspiration
+    const functions: ToolFunction[] = [
+        clickByText,
+        focusByLabel,
+        pressKey,
+        typeText
+    ];
 
     return async command => {
-        const messages = [{ role: 'user', content: command }];
+        const messages: Message[] = [{ role: 'user', content: command,  }];
 
         const next = () => ollama.chat({
             model: testerModel,
@@ -40,6 +38,7 @@ export const user = (page: Page): (command: string) => Promise<void> => {
                     messages.push(response.message);
                     messages.push({
                         role: 'tool',
+                        tool_name: tool.function.name,
                         content: output?.toString(),
                     });
                 }

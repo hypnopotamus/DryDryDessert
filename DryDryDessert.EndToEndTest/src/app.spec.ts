@@ -19,13 +19,22 @@ test('product cards are rendered', async ({ page }) => {
 
 test('clicking a product card goes to product details', async ({ page }) => {
   const tester = user(page);
-
-  await page.goto('');
-
   const products = await getProducts();
   const product = products[Math.floor(Math.random() * products.length)]
-  await expect(page.getByText(product.name, { exact: true })).toBeVisible();
+
+  await page.goto('');
   await tester(`click the card for the product named ${product.name}`);
+
   expect(page.url()).toContain(product.id);
   await expect(page.getByText(product.name, { exact: true })).toBeVisible();
+});
+
+test('entering a product search query goes to the search page', async ({ page }) => {
+  const searchQuery = "bumble bee broach";
+  const tester = user(page);
+
+  await page.goto('');
+  await tester(`focus on the "search" bar, then type "${searchQuery}", then press the Enter key`);
+
+  await expect(page.getByText(searchQuery)).toBeVisible();
 });

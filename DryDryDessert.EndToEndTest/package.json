@@ -4,12 +4,13 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+    "postinstall": "npm run install-browsers && npm run install-test-user",
     "install-browsers": "npx playwright install",
+    "install-test-user": "ollama pull llama3.1:8b",
     "test": "cross-env NODE_TLS_REJECT_UNAUTHORIZED=0 npx playwright test",
     "test-ui": "cross-env NODE_TLS_REJECT_UNAUTHORIZED=0 npx playwright test --ui",
     "generate-server-client": "cross-env JAVA_OPTS='-Dio.swagger.v3.parser.util.RemoteUrl.trustAll=true' openapi-generator-cli generate -g typescript-fetch -i https://localhost:7114/openapi/v1.json -o ./src/clients/server --additional-properties=withInterfaces=true,supportsES6=true,validationAttributes=true,useErasableSyntax=true,useObjectParameters=true",
-    "generate-pim-client": "cross-env JAVA_OPTS='-Dio.swagger.v3.parser.util.RemoteUrl.trustAll=true' openapi-generator-cli generate -g typescript-fetch -i https://localhost:7167/openapi/v1.json -o ./src/clients/pim --additional-properties=withInterfaces=true,supportsES6=true,validationAttributes=true,useErasableSyntax=true,useObjectParameters=true",
-    "install-test-user": "ollama pull llama3.1:8b"
+    "generate-pim-client": "cross-env JAVA_OPTS='-Dio.swagger.v3.parser.util.RemoteUrl.trustAll=true' openapi-generator-cli generate -g typescript-fetch -i https://localhost:7167/openapi/v1.json -o ./src/clients/pim --additional-properties=withInterfaces=true,supportsES6=true,validationAttributes=true,useErasableSyntax=true,useObjectParameters=true"    
   },
   "devDependencies": {
     "@openapitools/openapi-generator-cli": "^2.23.1",
