@@ -1,5 +1,16 @@
 # Practicing DRY in react (with Typescript)
 
+[Don't Repeat Yourself](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself) (DRY) is, broadly, the practice of trying to reduce duplication in a codebase.
+
+Duplicated code has a cost, it is a subset of "Technical Debt"
+- producing a new duplicate of existing code has a non-zero upfront cost; even copying and pasting existing code has more cost than zero... and it's rarely as simple as copying and pasting
+- duplicated code has a maintenance burden - making a change to the system has to be repeated for each duplicate or will likely be a bug for each duplicate missed
+- duplicated code has a cognitive burden - making sense of the system takes up more mental space in finding and navigating duplicated code, particularly when the duplicates are functionally the same but implemented differently
+
+Reducing duplicate code can be done in a lot of different ways, generally by composing larger units out of abstractions of smaller ones.  The implementations of the abstractions that are getting composed get reused where, otherwise, code would get duplicated.
+
+Commonly DRY and [SOLID](https://en.wikipedia.org/wiki/SOLID) go hand in hand, helping to make your code easier to break into units to be composed into larger ones while also helping to avoid that composition from locking either in place based on the other.
+
 ## Component Strategies
 
 - use or create a component library
@@ -20,7 +31,7 @@
 
 ## Styling
 
-- use or create an application theme
+- use or create an application theme (or equivalent construct)
    - avoid one-off styling, just follow the theme
       - not following the theme is a UI design smell
    - example: [app theme](./src/app.theme.ts) styles [icon buttons](./src/ShoppingCart/AddToCartButton.tsx)
