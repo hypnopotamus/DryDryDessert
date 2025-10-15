@@ -2,7 +2,7 @@ import type { Page } from '@playwright/test';
 import type { Message, Tool } from 'ollama';
 import ollama from 'ollama';
 import { clickByText } from './tools/clickByText';
-import { focusByLabel } from './tools/focusByLabel';
+import { clickByLabel } from './tools/clickByLabel';
 import { pressKey } from './tools/pressKey';
 import { typeText } from './tools/typeText';
 import { test } from '@playwright/test';
@@ -16,7 +16,7 @@ export const user = (page: Page): (command: string) => Promise<void> => {
     //https://github.com/microsoft/playwright/tree/main/packages/playwright/src/mcp/browser/tools has the mcp server tools, for inspiration
     const functions: ToolFunction[] = [
         clickByText,
-        focusByLabel,
+        clickByLabel,
         pressKey,
         typeText
     ];

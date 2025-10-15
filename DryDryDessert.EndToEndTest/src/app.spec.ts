@@ -34,7 +34,7 @@ test('entering a product search query goes to the search page', async ({ page })
   const tester = user(page);
 
   await page.goto('');
-  await tester(`focus on the "search" bar, then type "${searchQuery}", then press the Enter key`);
+  await tester(`click the text input labeled "search", then type "${searchQuery}", then press the Enter key`);
 
   await expect(page.getByText(searchQuery)).toBeVisible();
 });

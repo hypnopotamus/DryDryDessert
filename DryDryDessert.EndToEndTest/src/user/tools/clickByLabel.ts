@@ -1,15 +1,15 @@
 import { Page } from "@playwright/test";
 import { ToolFunction } from "../user";
 
-export const focusByLabel: ToolFunction = {
+export const clickByLabel: ToolFunction = {
     function: {
-        name: 'focusByLabel',
-        description: "find an element in the page by label and put focus on it",
+        name: 'clickByLabel',
+        description: "find an element in the page by label then click it",
         parameters: {
             type: "object",
-            required: ["label", "text"],
+            required: ["label"],
             properties: {
-                label: { type: "string", description: "the label of an element to find and focus on" }
+                label: { type: "string", description: "the label to search the page for" }
             }
         }
     },
