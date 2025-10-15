@@ -18,6 +18,8 @@ see [frontend](./drydrydessert.client/README.md) for the DRY lunch and learn con
    - playwright plugin (microsoft)
    - vitest plugin (vitest)
 - ollama (v0.11.10+)
+- Java runtime
+   - only used by  openapi-generator to (re)generate API client code
 
 #### end to end test
 
